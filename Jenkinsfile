@@ -1,4 +1,10 @@
 pipeline{
+    environment 
+    {
+        registry1 = "jarrayaahmed99/hariapp"
+        registryCredential = 'dockerpassword'
+        img=''
+     }
     agent any
     tools {
       maven 'maven3'
@@ -21,17 +27,25 @@ pipeline{
         
         stage('Docker Build'){
             steps{
-                sh "docker build . -t kammana/hariapp:${DOCKER_TAG} "
+                script {
+                    
+                 img= docker.build(registry1 , "-f ${env.WORKSPACE}/Dockerfile .")
+                       }
+              
             }
         }
         
         stage('DockerHub Push'){
             steps{
-                withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
-                    sh "docker login -u kammana -p ${dockerHubPwd}"
+                script 
+                     {
+                         docker.withRegistry( '', registryCredential) {
+                          img.push(env.BUILD_ID)
+                          img.push("latest")
+                     }
                 }
                 
-                sh "docker push kammana/hariapp:${DOCKER_TAG} "
+               
             }
         }
         
