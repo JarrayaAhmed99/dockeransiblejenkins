@@ -4,18 +4,17 @@ pipeline{
         registry1 = "jarrayaahmed99/hariapp"
         registryCredential = 'dockerpassword'
         img=''
+        DOCKER_TAG = getVersion()
      }
     agent any
     tools {
       maven 'maven3'
     }
-    environment {
-      DOCKER_TAG = getVersion()
-    }
+    
     stages{
         stage('SCM'){
             steps{
-             git url:'https://github.com/JarrayaAhmed99/goMyCodeLabProject.git', branch:'master'
+             git url:'https://github.com/JarrayaAhmed99/dockeransiblejenkins.git', branch:'master'
             }
         }
         
