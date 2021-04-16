@@ -26,7 +26,7 @@ pipeline{
         stage('doing some analysiss using sonarqube')
         {
             steps {     
-            def maven3 = tool name: 'maven3' , type:'maven' 
+            
                 withSonarQubeEnv('sonar6') { 
           sh "${mvnHome}/bin/mvn sonar:sonar"
                 }
