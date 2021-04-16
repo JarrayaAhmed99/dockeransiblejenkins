@@ -20,7 +20,7 @@ pipeline{
         
         stage('Maven Build'){
             steps{
-                sh 'mvn clean install -f ${env.WORKSPACE}/pom.xml'
+                sh "mvn clean package"
             }
         }
         stage('doing some analysiss using sonarqube')
