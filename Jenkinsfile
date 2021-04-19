@@ -23,14 +23,14 @@ pipeline{
                 sh "mvn clean package"
             }
         }
-        stage('doing some analysiss using sonarqube')
-        {
-            steps {     
+    //    stage('doing some analysiss using sonarqube')
+      //  {
+        //    steps {     
             
-                withSonarQubeEnv('sonar6') { 
-          sh "mvn sonar:sonar"
-                }
-        }
+          //      withSonarQubeEnv('sonar6') { 
+         // sh "mvn sonar:sonar"
+           //     }
+        //}
             
            //stage('Quality Gate') {
            //   steps {
