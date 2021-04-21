@@ -44,13 +44,13 @@ pipeline{
             
             
        // }
-        stage('mail khfif')
-        {
-        steps
-            {
-            mail bcc: 'ahmed.jarraya99@gmail.com', body: 'everything is working till now', cc: '', from: '', replyTo: '', subject: 'state', to: 'ahmed.jarraya99@gmail.com'
-            }
-        }
+        //stage('mail khfif')
+        //{
+       // steps
+         //   {
+           // mail bcc: 'ahmed.jarraya99@gmail.com', body: 'everything is working till now', cc: '', from: '', replyTo: '', subject: 'state', to: 'ahmed.jarraya99@gmail.com'
+            //}
+        //}
         stage('Docker Build'){
             steps{
                 script {
