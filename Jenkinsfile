@@ -87,6 +87,8 @@ emailext body: 'this is test', subject: 'test', to: 'ahmed.jarraya99@gmail.com'
         stage('SSH Declarative Example') {
             steps {
                 sshCommand remote: remote, command: "ls -al"
+                sshCommand remote: remote, command: "ansible-playbook play-deployment.yml -i inventory.txt"
+                sshCommand remote: remote, command: "ansible-playbook play-service.yml -i inventory.txt"
             }
         }
         
