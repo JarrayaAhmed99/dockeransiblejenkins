@@ -24,14 +24,15 @@ pipeline{
                 sh "mvn clean package"
             }
         }
-    //    stage('doing some analysiss using sonarqube')
-      //  {
-        //    steps {     
+        stage('doing some analysiss using sonarqube')
+       {
+          steps {     
             
-          //      withSonarQubeEnv('sonar6') { 
-         // sh "mvn sonar:sonar"
-           //     }
-        //}
+                withSonarQubeEnv('sonar6') { 
+                sh "mvn sonar:sonar"
+              }
+        }
+       }
             
            //stage('Quality Gate') {
            //   steps {
@@ -62,7 +63,7 @@ pipeline{
             }
         }
         
-        stage('DockerHub Push'){
+        stage('Pushing images to Dockerhub'){
             steps{
                 script 
                      {
@@ -84,7 +85,7 @@ emailext body: 'this is test', subject: 'test', to: 'ahmed.jarraya99@gmail.com'
         }
         
         
-        stage('SSH Declarative Example') {
+        stage('ssh to an ansible server and execute playbooks for deployment ') {
             steps {
                 sshCommand remote: remote, command: "ls -al"
                 sshCommand remote: remote, command: "ansible-playbook play-deployment.yml -i inventory.txt"
@@ -94,17 +95,8 @@ emailext body: 'this is test', subject: 'test', to: 'ahmed.jarraya99@gmail.com'
         
        
         
-        stage ('where am i')
-         {
-             steps {
-                 sh 'hostname'
-                   }
-         } 
-        stage('Docker Deploy'){
-            steps{
-              ansiblePlaybook credentialsId: 'dev-server', disableHostKeyChecking: true, extras: "-e DOCKER_TAG=${DOCKER_TAG}", installation: 'ansible', inventory: 'dev.inv', playbook: 'deploy-docker.yml'
-            }
-        }
+       
+       
     }
 }
 
