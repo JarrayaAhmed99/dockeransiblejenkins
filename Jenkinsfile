@@ -1,3 +1,4 @@
+def remote = [name: 'ansible', host: '192.168.183.7', user: 'ahmed', password: '24149100', allowAnyHosts: true]
 pipeline{
     environment 
     {
@@ -79,6 +80,13 @@ pipeline{
             steps {
 
 emailext body: 'this is test', subject: 'test', to: 'ahmed.jarraya99@gmail.com'     
+            }
+        }
+        
+        
+        stage('SSH Declarative Example') {
+            steps {
+                sshCommand remote: remote, command: "ls -al"
             }
         }
         
