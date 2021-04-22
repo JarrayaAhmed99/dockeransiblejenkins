@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pfe-service
+  labels:
+    app: pfe-project
+spec:
+  selector:
+    app: pfe-project
+  type: LoadBalancer
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 31200
