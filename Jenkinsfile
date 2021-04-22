@@ -90,14 +90,8 @@ emailext body: 'this is test', subject: 'test', to: 'ahmed.jarraya99@gmail.com'
             }
         }
         
-        stage('ssh')
-        {
-            steps
-            {
-                sh 'ssh ahmed@192.168.183.7'
-                
-            }
-        }
+       
+        
         stage ('where am i')
          {
              steps {
