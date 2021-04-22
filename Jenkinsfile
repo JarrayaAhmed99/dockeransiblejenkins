@@ -98,6 +98,12 @@ emailext body: 'this is test', subject: 'test', to: 'ahmed.jarraya99@gmail.com'
                 
             }
         }
+        stage ('where am i')
+         {
+             steps {
+                 sh 'hostname'
+                   }
+         } 
         stage('Docker Deploy'){
             steps{
               ansiblePlaybook credentialsId: 'dev-server', disableHostKeyChecking: true, extras: "-e DOCKER_TAG=${DOCKER_TAG}", installation: 'ansible', inventory: 'dev.inv', playbook: 'deploy-docker.yml'
