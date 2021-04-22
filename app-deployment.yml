@@ -1,0 +1,26 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: hariapp
+spec:
+  selector:
+    matchLabels:
+      app: pfe-project
+  replicas: 2 
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+
+  template:
+    metadata:
+      labels:
+        app: pfe-project
+    spec:
+      containers:
+      - name: hariapp-container
+        image: jarrayaahmed99/hariapp
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
