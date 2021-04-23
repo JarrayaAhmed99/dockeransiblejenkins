@@ -1,6 +1,6 @@
 ---
 - name: Create pods using deployment 
-  hosts: kubernetes 
+  hosts: master 
   # become: true
   user: ahmed
  
