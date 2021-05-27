@@ -19,6 +19,14 @@ pipeline{
             }
         }
         
+        stage('notify')
+        {
+            steps {
+
+emailext body: 'this is test', subject: 'test', to: 'ahmed.jarraya99@gmail.com'     
+            }
+        }
+        
         stage('Maven Build'){
             steps{
                 sh "mvn clean package"
