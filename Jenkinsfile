@@ -23,7 +23,7 @@ pipeline{
         {
             steps {
 
-emailext body: 'this is test', subject: 'test', to: 'ahmed.jarraya99@gmail.com'     
+emailext body: 'this is a notification  email sent from Jenkins', subject: 'Jenkins notification', to: 'jarayaahmed@gmail.com'     
             }
         }
         
