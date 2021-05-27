@@ -84,7 +84,7 @@ emailext body: 'this is test', subject: 'test', to: 'ahmed.jarraya99@gmail.com'
                
             }
         }
-        stage('notify')
+        stage('notify2')
         {
             steps {
 
