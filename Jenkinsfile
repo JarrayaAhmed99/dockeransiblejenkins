@@ -31,7 +31,7 @@ Go to $BUILD_URL for more info."""
             //body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
               //<p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
             //recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-          )
+         // )
 
 //emailext body: 'this is a notification  email sent from Jenkins', subject: 'Jenkins notification', to: 'jarayaahmed@gmail.com'     
            }
